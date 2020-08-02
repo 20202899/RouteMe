@@ -71,10 +71,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun setupLastLocation() {
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         if (checkPermission()) {
-            mFusedLocationProviderClient.lastLocation.addOnSuccessListener {
-                val latlng = LatLng(it.latitude, it.longitude)
-                mMainViewModel.myLocationLiveData.value = latlng
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 16f))
+            mFusedLocationProviderClient.lastLocation.addOnSuccessListener {location ->
+
+                location?.let {
+                    val latlng = LatLng(it.latitude, it.longitude)
+                    mMainViewModel.myLocationLiveData.value = latlng
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 16f))
+                }
             }
         }else {
             requestPermissions()
