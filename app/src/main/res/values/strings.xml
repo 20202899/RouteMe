@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RouteMe</string>
+    <string name="title_toolbar" >Pesquisar minha rota</string>
+
+
+    <string name="map_key">AIzaSyAfcr0lyY94W5ekpN-M6AgmHBqdW4Tv2Ws</string>
+</resources>
